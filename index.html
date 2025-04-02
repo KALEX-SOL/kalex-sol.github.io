@@ -3,85 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalex Soluciones</title>
+    <title>Kalex Soluciones - Energía Eficiente</title>
     <style>
+        :root {
+            --primary-color: #008000;
+            --secondary-color: #006600;
+            --accent-color: #FFD700;
+            --text-color: #333;
+            --light-bg: #f4f4f4;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
         }
+        
         header {
-            background-color: #008000;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            text-align: center;
-            padding: 1em;
+            padding: 1.5em 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+        }
+        
+        .logo {
+            height: 100px;
+            margin-right: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-text p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+        
         nav {
+            background-color: var(--secondary-color);
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
             display: flex;
             justify-content: center;
-            background: #006600;
-            padding: 0.5em;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
+        
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
+        
+        nav a:hover, nav a:focus {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
         .container {
-            width: 80%;
-            margin: 20px auto;
+            max-width: 1200px;
+            margin: 30px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
-        footer {
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
             text-align: center;
-            padding: 1em;
-            background: #008000;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            width: 250px;
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
             color: white;
-            margin-top: 20px;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            nav a {
+                margin: 5px;
+                font-size: 0.9em;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="LOGO KALEX_V1.png" type="image/png">
 </head>
 <body>
     <header>
-        <h1>Kalex Soluciones</h1>
-        <p>Optimizando tu energía con innovación</p>
+        <div class="logo-container">
+            <img src="LOGO KALEX_V1.png" alt="Logo Kalex Soluciones" class="logo">
+            <div class="header-text">
+                <h1>Kalex Soluciones</h1>
+                <p>Optimizando tu energía con innovación</p>
+            </div>
+        </div>
     </header>
+    
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <div class="nav-container">
+            <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
+            <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+            <a href="#proyectos"><i class="fas fa-project-diagram"></i> Proyectos</a>
+            <a href="#clientes"><i class="fas fa-handshake"></i> Clientes</a>
+            <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+        </div>
     </nav>
+    
     <div class="container" id="inicio">
         <h2>Bienvenido a Kalex Soluciones</h2>
-        <p>Ofrecemos soluciones innovadoras en energía para optimizar el consumo y mejorar la eficiencia.</p>
+        <p>Somos líderes en soluciones energéticas innovadoras, comprometidos con la eficiencia y la sostenibilidad. Nuestro equipo de expertos trabaja para ofrecerte las mejores opciones en gestión de energía, reducción de costos y tecnologías renovables.</p>
+        
+        <div style="display: flex; justify-content: center; margin: 30px 0;">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Energía sostenible" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        </div>
+        
+        <p>En Kalex Soluciones entendemos que cada cliente tiene necesidades únicas. Por eso desarrollamos soluciones personalizadas que se adaptan a tus requerimientos específicos, garantizando siempre el máximo rendimiento y eficiencia energética.</p>
     </div>
+    
     <div class="container" id="servicios">
         <h2>Nuestros Servicios</h2>
-        <ul>
-            <li>Opciones tarifarias</li>
-            <li>Uso eficiente de la energía</li>
-            <li>Medición de la calidad de energía</li>
-            <li>Energías renovables</li>
-        </ul>
+        <p>Ofrecemos un portafolio completo de servicios diseñados para optimizar tu consumo energético y reducir costos:</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Opciones Tarifarias</h3>
+                <p>Análisis personalizado para identificar la tarifa eléctrica que mejor se adapte a tu patrón de consumo.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Eficiencia Energética</h3>
+                <p>Diagnósticos y soluciones para reducir tu consumo sin afectar tu productividad.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Calidad de Energía</h3>
+                <p>Medición y análisis para identificar problemas de calidad que afectan tus equipos.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <h3>Energías Renovables</h3>
+                <p>Diseño e implementación de sistemas solares fotovoltaicos a tu medida.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Auditorías Energéticas</h3>
+                <p>Evaluaciones completas para identificar oportunidades de ahorro en tus instalaciones.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Automatización</h3>
+                <p>Sistemas inteligentes para gestionar y monitorear tu consumo en tiempo real.</p>
+            </div>
+        </div>
     </div>
+    
     <div class="container" id="nosotros">
         <h2>Sobre Nosotros</h2>
-        <p>Somos una empresa comprometida con la eficiencia energética y la innovación en el sector eléctrico.</p>
+        <p>Kalex Soluciones nació en 2015 con la misión de transformar el sector energético a través de la innovación y el conocimiento técnico especializado. Nuestros valores fundamentales son:</p>
+        
+        <ul style="columns: 2; list-style-type: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Excelencia técnica</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Compromiso con el cliente</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Innovación constante</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Sostenibilidad ambiental</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Transparencia</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Trabajo en equipo</li>
+        </ul>
+        
+        <h3 style="margin-top: 30px;">Nuestro Equipo</h3>
+        
+        <div class="team-container">
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ing. Carlos Méndez" class="team-photo">
+                <h4>Ing. Carlos Méndez</h4>
+                <p>Director General</p>
+                <p>Especialista en eficiencia energética con 15 años de experiencia.</p>
+            </div>
+            
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ing. Laura Torres" class="team-photo">
+                <h4>Ing. Laura Torres</h4>
+                <p>Gerente de Proyectos</p>
+                <p>Experta en energías renovables y sistemas fotovoltaicos.</p>
+            </div>
+            
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Ing. Javier Rojas" class="team-photo">
+                <h4>Ing. Javier Rojas</h4>
+                <p>Jefe de Ingeniería</p>
+                <p>Especialista en calidad de energía y sistemas de monitoreo.</p>
+            </div>
+        </div>
     </div>
+    
+    <div class="container" id="proyectos">
+        <h2>Proyectos Destacados</h2>
+        <p>Algunos de nuestros trabajos más relevantes:</p>
+        
+        <div style="margin-top: 30px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div style="width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Proyecto Solar" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h4 style="margin-top: 0;">Planta Solar Industrial</h4>
+                        <p>Sistema fotovoltaico de 500kW para fábrica textil en Lima. Ahorro anual: $120,000.</p>
+                    </div>
+                </div>
+                
+                <div style="width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Eficiencia Energética" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h4 style="margin-top: 0;">Optimización Hospitalaria</h4>
+                        <p>Rediseño del sistema eléctrico para hospital, logrando 30% de ahorro energético.</p>
+                    </div>
+                </div>
+                
+                <div style="width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Calidad de Energía" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h4 style="margin-top: 0;">Corrección de Armónicos</h4>
+                        <p>Solución integral para problemas de calidad de energía en centro de datos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="clientes">
+        <h2>Nuestros Clientes</h2>
+        <p>Hemos tenido el privilegio de trabajar con organizaciones líderes en diversos sectores:</p>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px; align-items: center;">
+            <img src="https://via.placeholder.com/150x80/008000/FFFFFF?text=Cliente+1" alt="Cliente 1" style="height: 80px; filter: grayscale(100%) opacity(70%); transition: all 0.3s;" onmouseover="this.style.filter='none'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%) opacity(70%)'; this.style.opacity='0.7'">
+            <img src="https://via.placeholder.com/150x80/008000/FFFFFF?text=Cliente+2" alt="Cliente 2" style="height: 80px; filter: grayscale(100%) opacity(70%); transition: all 0.3s;" onmouseover="this.style.filter='none'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%) opacity(70%)'; this.style.opacity='0.7'">
+            <img src="https://via.placeholder.com/150x80/008000/FFFFFF?text=Cliente+3" alt="Cliente 3" style="height: 80px; filter: grayscale(100%) opacity(70%); transition: all 0.3s;" onmouseover="this.style.filter='none'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%) opacity(70%)'; this.style.opacity='0.7'">
+            <img src="https://via.placeholder.com/150x80/008000/FFFFFF?text=Cliente+4" alt="Cliente 4" style="height: 80px; filter: grayscale(100%) opacity(70%); transition: all 0.3s;" onmouseover="this.style.filter='none'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%) opacity(70%)'; this.style.opacity='0.7'">
+            <img src="https://via.placeholder.com/150x80/008000/FFFFFF?text=Cliente+5" alt="Cliente 5" style="height: 80px; filter: grayscale(100%) opacity(70%); transition: all 0.3s;" onmouseover="this.style.filter='none'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%) opacity(70%)'; this.style.opacity='0.7'">
+        </div>
+        
+        <div style="margin-top: 40px; background: #f9f9f9; padding: 30px; border-radius: 8px;">
+            <h3 style="margin-top: 0; text-align: center;">Testimonios</h3>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div style="width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Juan Pérez" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
+                        <div>
+                            <h5 style="margin: 0;">Juan Pérez</h5>
+                            <p style="margin: 0; font-size: 0.9em; color: #666;">Gerente Industrial, Textiles S.A.</p>
+                        </div>
+                    </div>
+                    <p style="font-style: italic;">"Kalex Soluciones implementó un sistema fotovoltaico que redujo nuestros costos energéticos en 40%. Excelente servicio y seguimiento."</p>
+                    <div style="color: var(--accent-color);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div style="width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="María Gómez" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
+                        <div>
+                            <h5 style="margin: 0;">María Gómez</h5>
+                            <p style="margin: 0; font-size: 0.9em; color: #666;">Directora, Clínica San José</p>
+                        </div>
+                    </div>
+                    <p style="font-style: italic;">"Gracias a su auditoría energética, identificamos oportunidades de ahorro que no habíamos considerado. Profesionales altamente capacitados."</p>
+                    <div style="color: var(--accent-color);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div style="width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Roberto Sánchez" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
+                        <div>
+                            <h5 style="margin: 0;">Roberto Sánchez</h5>
+                            <p style="margin: 0; font-size: 0.9em; color: #666;">Gerente, Hotel Costa Verde</p>
+                        </div>
+                    </div>
+                    <p style="font-style: italic;">"El sistema de monitoreo energético que instalaron nos permite tomar decisiones informadas. Atención personalizada y soluciones a medida."</p>
+                    <div style="color: var(--accent-color);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="container" id="contacto">
         <h2>Contacto</h2>
-        <p>Email: contacto@kalexsoluciones.com</p>
-        <p>Teléfono: +51 999 999 999</p>
+        <p>Estamos listos para ayudarte. Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
+            <div style="flex: 1; min-width: 300px;">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servicio">Servicio de interés</label>
+                        <select id="servicio">
+                            <option value="">Seleccione una opción</option>
+                            <option value="tarifas">Opciones tarifarias</option>
+                            <option value="eficiencia">Eficiencia energética</option>
+                            <option value="calidad">Calidad de energía</option>
+                            <option value="renovables">Energías renovables</option>
+                            <option value="auditorias">Auditorías energéticas</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" required></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width" style="text-align: center;">
+                        <button type="submit">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h3>Información de contacto</h3>
+                
+                <div style="margin-bottom: 25px;">
+                    <h4 style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 10px;"></i> Oficina Principal</h4>
+                    <p>Av. Javier Prado 1234, San Isidro<br>Lima, Perú</p>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h4 style="margin-bottom: 10px;"><i class="fas fa-phone-alt" style="color: var(--primary-color); margin-right: 10px;"></i> Teléfonos</h4>
+                    <p>+51 999 999 999<br>+51 1 2345678</p>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h4 style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: var(--primary-color); margin-right: 10px;"></i> Correo electrónico</h4>
+                    <p>contacto@kalexsoluciones.com<br>ventas@kalexsoluciones.com</p>
+                </div>
+                
+                <div style="margin-bottom: 25px;">
+                    <h4 style="margin-bottom: 10px;"><i class="fas fa-clock" style="color: var(--primary-color); margin-right: 10px;"></i> Horario de atención</h4>
+                    <p>Lunes a Viernes: 8:30 am - 6:00 pm<br>Sábados: 9:00 am - 1:00 pm</p>
+                </div>
+                
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965476115388!2d-77.03307292468676!3d-12.09036608817038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x14206cb9cc452e4a!2sAvenida%20Javier%20Prado%20Este%2C%20San%20Isidro!5e0!3m2!1ses-419!2spe!4v1620000000000!5m2!1ses-419!2spe" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <footer>
-        <p>&copy; 2025 Kalex Soluciones - Todos los derechos reservados</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kalex Soluciones</h3>
+                <p>Optimizando tu energía con innovación y tecnología de punta para un futuro sostenible.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#" style="color: white; text-decoration: none;">Opciones tarifarias</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Eficiencia energética</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Calidad de energía</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Energías renovables</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Automatización</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#inicio" style="color: white; text-decoration: none;">Inicio</a></li>
+                    <li><a href="#servicios" style="color: white; text-decoration: none;">Servicios</a></li>
+                    <li><a href="#nosotros" style="color: white; text-decoration: none;">Nosotros</a></li>
+                    <li><a href="#proyectos" style="color: white; text-decoration: none;">Proyectos</a></li>
+                    <li><a href="#contacto" style="color: white; text-decoration: none;">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suscríbete</h3>
+                <p>Recibe nuestras últimas noticias y promociones.</p>
+                <form style="display: flex;">
+                    <input type="email" placeholder="Tu correo" style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
+                    <button type="submit" style="background: var(--accent-color); color: var(--secondary-color); border: none; padding: 0 15px; border-radius: 0 4px 4px 0; cursor: pointer;">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Kalex Soluciones. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
